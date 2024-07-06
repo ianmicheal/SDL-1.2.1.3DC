@@ -16,15 +16,17 @@
     License along with this library; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+    BERO <bero@geocities.co.jp>
+    based on SDL_diskaudio.h by
     Sam Lantinga
     slouken@libsdl.org
 */
-#include "SDL_config.h"
+
 
 #ifndef _SDL_dcaudio_h
 #define _SDL_dcaudio_h
 
-#include "../SDL_sysaudio.h"
+#include "SDL_sysaudio.h"
 
 /* Hidden "this" pointer for the video functions */
 #define _THIS	SDL_AudioDevice *this

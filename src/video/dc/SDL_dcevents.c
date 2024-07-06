@@ -1,35 +1,50 @@
 /*
     SDL - Simple DirectMedia Layer
-    Copyright (C) 1997-2012 Sam Lantinga
+    Copyright (C) 1997-2004 Sam Lantinga
 
     This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
+    modify it under the terms of the GNU Library General Public
     License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) any later version.
+    version 2 of the License, or (at your option) any later version.
 
     This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
+    Library General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public
     License along with this library; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+    BERO
+    bero@geocities.co.jp
+
+    based on SDL_nullevents.c by
+
     Sam Lantinga
     slouken@libsdl.org
+	
+	Modified by Lawrence Sebald <bluecrab2887@netscape.net>
 */
 #include "SDL_config.h"
 
 #include "SDL.h"
-#include "../../events/SDL_sysevents.h"
-#include "../../events/SDL_events_c.h"
+#include "SDL_sysevents.h"
+#include "SDL_events_c.h"
 #include "SDL_dcvideo.h"
 #include "SDL_dcevents_c.h"
 
 #include <dc/maple.h>
 #include <dc/maple/mouse.h>
 #include <dc/maple/keyboard.h>
+#include <stdio.h>
+#include <arch/arch.h>
+#include <arch/timer.h>
+#include <arch/irq.h>
+
+#define MIN_FRAME_UPDATE 16
+
+extern unsigned __sdl_dc_mouse_shift;
 
 const static unsigned short sdl_key[]= {
 	/*0*/	0, 0, 0, 0, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
@@ -54,9 +69,7 @@ const static unsigned short sdl_shift[] = {
 #define	MOUSE_WHEELUP 	(1<<4)
 #define	MOUSE_WHEELDOWN	(1<<5)
 
-static void mouse_update(void)
-{
-const	static char sdl_mousebtn[] = {
+const static char sdl_mousebtn[] = {
 	MOUSE_LEFTBUTTON,
 	MOUSE_RIGHTBUTTON,
 	MOUSE_SIDEBUTTON,
@@ -64,83 +77,92 @@ const	static char sdl_mousebtn[] = {
 	MOUSE_WHEELDOWN
 };
 
-	uint8 addr;
-	mouse_cond_t	cond;
-
+static void mouse_update(void) {
+    maple_device_t *dev;
+    mouse_state_t *state;
+	
 	static int prev_buttons;
 	int buttons,changed;
-	int i;
+	int i,dx,dy;
+	
+	//DC: Check if any mouse is connected
+	if(!(dev = maple_enum_type(0, MAPLE_FUNC_MOUSE)) ||
+       !(state = maple_dev_status(dev)))
+        return;
+	
+	buttons = state->buttons^0xff;
+	if (state->dz<0) buttons|=MOUSE_WHEELUP;
+	if (state->dz>0) buttons|=MOUSE_WHEELDOWN;
 
-	if ((addr = maple_first_mouse())==0 || mouse_get_cond(addr, &cond)<0) return;
-
-	buttons = cond.buttons^0xff;
-	if (cond.dz<0) buttons|=MOUSE_WHEELUP;
-	if (cond.dz>0) buttons|=MOUSE_WHEELDOWN;
-
-	if (cond.dx||cond.dy) SDL_PrivateMouseMotion(0,1,cond.dx,cond.dy);
+	dx=state->dx>>__sdl_dc_mouse_shift;
+	dy=state->dy>>__sdl_dc_mouse_shift;
+	if (dx||dy)
+		SDL_PrivateMouseMotion(0,1,dx,dy);
 
 	changed = buttons^prev_buttons;
 	for(i=0;i<sizeof(sdl_mousebtn);i++) {
 		if (changed & sdl_mousebtn[i]) {
+			//Do not flip state.
 			SDL_PrivateMouseButton((buttons & sdl_mousebtn[i])?SDL_PRESSED:SDL_RELEASED,i,0,0);
 		}
 	}
 	prev_buttons = buttons;
 }
 
-static void keyboard_update(void)
+static void keyboard_update(void) {
+	static kbd_state_t old_state;
+    kbd_state_t	*state;
+    maple_device_t *dev;
+    int shiftkeys;
+    SDL_keysym keysym;
+    int i;
+
+    if(!(dev = maple_enum_type(0, MAPLE_FUNC_KEYBOARD)))
+        return;
+
+    state = maple_dev_status(dev);
+
+    if(!state)
+        return;
+
+    shiftkeys = state->shift_keys ^ old_state.shift_keys;
+    for(i = 0; i < sizeof(sdl_shift); ++i) {
+        if((shiftkeys >> i) & 1) {
+            keysym.sym = sdl_shift[i];
+            SDL_PrivateKeyboard(((state->shift_keys >> i) & 1) ?
+                                SDL_PRESSED : SDL_RELEASED, &keysym);
+        }
+    }
+
+    for(i = 0; i < sizeof(sdl_key); ++i) {
+        if(state->matrix[i] != old_state.matrix[i]) {
+            int key = sdl_key[i];
+            if(key) {
+                keysym.sym = key;
+                SDL_PrivateKeyboard(state->matrix[i] ?
+                                    SDL_PRESSED : SDL_RELEASED, &keysym);
+            }
+        }
+    }
+
+    old_state = *state;
+}
+
+static __inline__ Uint32 myGetTicks(void)
 {
-	static kbd_state_t	old_state;
-	static uint8 old_addr;
-
-	kbd_state_t	*state;
-	uint8	addr;
-	int	port,unit;
-
-	int shiftkeys;
-	SDL_keysym keysym;
-
-	int i;
-
-	addr = maple_first_kb();
-
-	if (addr==0) return;
-
-	if (addr!=old_addr) {
-		old_addr = addr;
-		SDL_memset(&old_state,0,sizeof(old_state));
-	}
-
-	maple_raddr(addr,&port,&unit);
-
-	state = maple_dev_state(port,unit);
-	if (!state) return;
-
-	shiftkeys = state->shift_keys ^ old_state.shift_keys;
-	for(i=0;i<sizeof(sdl_shift);i++) {
-		if ((shiftkeys>>i)&1) {
-			keysym.sym = sdl_shift[i];
-			SDL_PrivateKeyboard(((state->shift_keys>>i)&1)?SDL_PRESSED:SDL_RELEASED,&keysym);
-		}
-	}
-
-	for(i=0;i<sizeof(sdl_key);i++) {
-		if (state->matrix[i]!=old_state.matrix[i]) {
-			int key = sdl_key[i];
-			if (key) {
-				keysym.sym = key;
-				SDL_PrivateKeyboard(state->matrix[i]?SDL_PRESSED:SDL_RELEASED,&keysym);
-			}
-		}
-	}
-
-	old_state = *state;
+	return ((timer_us_gettime64()>>10));
 }
 
 void DC_PumpEvents(_THIS)
 {
-	keyboard_update();
-	mouse_update();
+	static Uint32 last_time=0;
+	Uint32 now=myGetTicks();
+	if (now-last_time>MIN_FRAME_UPDATE)
+	{
+		keyboard_update();
+		mouse_update();
+		last_time=now;
+	}
 }
 
 void DC_InitOSKeymap(_THIS)

@@ -86,3 +86,4 @@ test/threadwin
 test/torturethread
 test/testcursor
 test/testloadso
+include/SDL_config.h
