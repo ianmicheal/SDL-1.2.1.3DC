@@ -735,10 +735,10 @@ const static struct {
 	DEF(glEnable),
 	DEF(glFrontFace),
 	DEF(glEnd),
-//	DEF(glFlush),
+	DEF(glFlush),
 	DEF(glHint),
 	DEF(glGenTextures),
-//	DEF(glGetString),
+	DEF(glGetString),
 	DEF(glLoadIdentity),
 	DEF(glLoadMatrixf),
 	DEF(glLoadTransposeMatrixf),
@@ -746,7 +746,7 @@ const static struct {
 	DEF(glMultMatrixf),
 	DEF(glMultTransposeMatrixf),
 	DEF(glOrtho),
-//	DEF(glPixelStorei),
+	DEF(glPixelStorei),
 //	DEF(glPopAttrib),
 //	DEF(glPopClientAttrib),
 	{"glPopAttrib",&dmyfunc},
@@ -765,9 +765,11 @@ const static struct {
 	DEF(glTexEnvi),
 	DEF(glTexImage2D),
 	DEF(glTexParameteri),
-//	DEF(glTexSubImage2D),
+	DEF(glTexSubImage2D),
 	DEF(glViewport),
 	DEF(glShadeModel),
+	DEF(glTexEnvf),
+	DEF(glVertex2i)
 #undef	DEF
 };
 
