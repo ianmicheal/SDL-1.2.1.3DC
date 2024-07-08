@@ -1,6 +1,6 @@
 /*
     SDL - Simple DirectMedia Layer
-    Copyright (C) 1997-2006 Sam Lantinga
+    Copyright (C) 1997-2012 Sam Lantinga
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -26,12 +26,6 @@
 #include "SDL_blit.h"
 #include "SDL_RLEaccel_c.h"
 #include "SDL_pixels_c.h"
-
-#ifdef __DREAMCAST__ 
-#include "memfuncs.h"
-#define  memset_
-#endif
-
 
 #if defined(__GNUC__) && (defined(__i386__) || defined(__x86_64__)) && SDL_ASSEMBLY_ROUTINES
 #define MMX_ASMBLIT
@@ -113,35 +107,7 @@ static int SDL_SoftBlit(SDL_Surface *src, SDL_Rect *srcrect,
 	/* Blit is done! */
 	return(okay ? 0 : -1);
 }
-// static __inline__ void * memcpy_ (void *dest, const void *src, size_t len)
-// {
-//   if(!len)
-//   {
-//     return dest;
-//   }
 
-//   const uint8_t *s = (uint8_t *)src;
-//   uint8_t *d = (uint8_t *)dest;
-
-//   uint32_t diff = (uint32_t)d - (uint32_t)(s + 1); // extra offset because input gets incremented before output is calculated
-//   // Underflow would be like adding a negative offset
-
-//   // Can use 'd' as a scratch reg now
-//   asm volatile (
-//     "clrs\n" // Align for parallelism (CO) - SH4a use "stc SR, Rn" instead with a dummy Rn
-//   ".align 2\n"
-//   "0:\n\t"
-//     "dt %[size]\n\t" // (--len) ? 0 -> T : 1 -> T (EX 1)
-//     "mov.b @%[in]+, %[scratch]\n\t" // scratch = *(s++) (LS 1/2)
-//     "bf.s 0b\n\t" // while(s != nexts) aka while(!T) (BR 1/2)
-//     " mov.b %[scratch], @(%[offset], %[in])\n" // *(datatype_of_s*) ((char*)s + diff) = scratch, where src + diff = dest (LS 1)
-//     : [in] "+&r" ((uint32_t)s), [scratch] "=&r" ((uint32_t)d), [size] "+&r" (len) // outputs
-//     : [offset] "z" (diff) // inputs
-//     : "t", "memory" // clobbers
-//   );
-
-//   return dest;
-// }
 #ifdef MMX_ASMBLIT
 static __inline__ void SDL_memcpyMMX(Uint8 *to, const Uint8 *from, int len)
 {
