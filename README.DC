@@ -100,6 +100,7 @@ For a complete list of features and detailed documentation, please visit the [GL
 - **Chui**: Original work and improvements for SDL on Dreamcast.
 - **Kazade**: GLDC library and enhancements.
 - **MRNEO240**:GLDC Optimizing and Support.
+- DreamHal -- https://github.com/sega-dreamcast/dreamhal/
 GNU Lesser General Public License, version 2.1
 https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
 
