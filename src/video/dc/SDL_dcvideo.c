@@ -1,40 +1,30 @@
 /*
     SDL - Simple DirectMedia Layer
-    Copyright (C) 1997-2004 Sam Lantinga
+    Copyright (C) 1997-2012 Sam Lantinga
+
     This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Library General Public
+    modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
+    version 2.1 of the License, or (at your option) any later version.
+
     This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
     Lesser General Public License for more details.
 
-    You should have received a copy of the GNU Lesser General Public
+   You should have received a copy of the GNU Lesser General Public
     License along with this library; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-   BERO
+
+    BERO
     bero@geocities.co.jp
+
     based on SDL_nullvideo.c by
+
     Sam Lantinga
     slouken@libsdl.org
-*/
+*/ 
 
-/* Dummy SDL video driver implementation; this is just enough to make an
- *  SDL-based application THINK it's got a working video driver, for
- *  applications that call SDL_Init(SDL_INIT_VIDEO) when they don't need it,
- *  and also for use as a collection of stubs when porting SDL to a new
- *  platform for which you haven't yet written a valid video driver.
- *
- * This is also a great way to determine bottlenecks: if you think that SDL
- *  is a performance problem for a given platform, enable this driver, and
- *  then see if your application runs faster without video overhead.
- *
- * Initial work by Ryan C. Gordon (icculus@linuxgames.com). A good portion
- *  of this was cut-and-pasted from Stephane Peter's work in the AAlib
- *  SDL video driver.  Renamed to "DC" by Sam Lantinga.
- */
- 
 #include <kos.h> //For 60Hz mode
 #include <stdio.h>
 #include <stdlib.h>
@@ -361,7 +351,7 @@ SDL_Surface *DC_SetVideoMode(_THIS, SDL_Surface *current,
 #ifndef SDL_VIDEO_OPENGL
 	if ((!(flags&SDL_FULLSCREEN))&&(SDL_DC_GetVideoDriver()==SDL_DC_TEXTURED_VIDEO))
 	{
-		fprintf(stderr, "\nWelcome to SDLdc = SDL_DC_TEXTURED_VIDEO");
+		// fprintf(stderr, "\nWelcome to SDLdc = SDL_DC_TEXTURED_VIDEO");
 		for(sdl_dc_wtex=64;sdl_dc_wtex<width;sdl_dc_wtex<<=1);
 		for(sdl_dc_htex=64;sdl_dc_htex<height;sdl_dc_htex<<=1);
 		if (sdl_dc_wtex!=width || sdl_dc_htex!=height || bpp !=16) 
@@ -377,7 +367,7 @@ SDL_Surface *DC_SetVideoMode(_THIS, SDL_Surface *current,
 		height=480;
 		bpp=16;
 		sdl_dc_textured=-1;
-		fprintf(stderr, "\nBye to SDLdc = SDL_DC_TEXTURED_VIDEO - sdl_dc_width %d ,sdl_dc_height %d ,sdl_dc_bpp %d",sdl_dc_width,sdl_dc_height,sdl_dc_bpp);
+		// fprintf(stderr, "\nBye to SDLdc = SDL_DC_TEXTURED_VIDEO - sdl_dc_width %d ,sdl_dc_height %d ,sdl_dc_bpp %d",sdl_dc_width,sdl_dc_height,sdl_dc_bpp);
 	}
 	else
 		sdl_dc_textured=0;
@@ -464,7 +454,7 @@ SDL_Surface *DC_SetVideoMode(_THIS, SDL_Surface *current,
 #ifndef SDL_VIDEO_OPENGL
 	if (sdl_dc_textured)
 	{
-		fprintf(stdout, "\nWelcome to SDLdc3! -sdl_dc_width :%d , sdl_dc_height %d \n",sdl_dc_width,sdl_dc_height);
+		// fprintf(stdout, "\nWelcome to SDLdc3! -sdl_dc_width :%d , sdl_dc_height %d \n",sdl_dc_width,sdl_dc_height);
 		current->w=sdl_dc_width;
 		current->h=sdl_dc_height;
 		current->pitch = sdl_dc_width*2; //(bpp>>3);
@@ -568,7 +558,7 @@ static float sdl_dc_v2=0.6f;
 void SDL_DC_SetWindow(int width, int height)
 {
 #ifndef SDL_VIDEO_OPENGL
-	fprintf(stdout, "\nWelcome to SDL_DC_SetWindow width: %d , height : %d, sdl_dc_width: %d , sdl_dc_height: %d \n", width, height, sdl_dc_width, sdl_dc_height);
+	// fprintf(stdout, "\nWelcome to SDL_DC_SetWindow width: %d , height : %d, sdl_dc_width: %d , sdl_dc_height: %d \n", width, height, sdl_dc_width, sdl_dc_height);
 	sdl_dc_width=width;
 	sdl_dc_height=height;
 	sdl_dc_u1=0.3f*(1.0f/((float)sdl_dc_wtex));
@@ -630,6 +620,7 @@ static void sdl_dc_blit_textured(void)
 
 static int DC_FlipHWSurface(_THIS, SDL_Surface *surface)
 {
+
 #ifndef SDL_VIDEO_OPENGL
 	if (sdl_dc_textured)
 		sdl_dc_blit_textured();
@@ -656,8 +647,13 @@ static int DC_FlipHWSurface(_THIS, SDL_Surface *surface)
 static void DC_UpdateRects(_THIS, int numrects, SDL_Rect *rects)
 {
 #ifndef SDL_VIDEO_OPENGL
-	if (sdl_dc_textured)
-		sdl_dc_blit_textured();
+	if (sdl_dc_textured){				
+			sdl_dc_blit_textured();
+			}
+			// bfont_draw_str(vram_l+0 * 640+10, 640,0,"Q W E R T Y U I O P");
+			// bfont_draw_str(vram_l+10 * 640+10, 640,0,"A S D F G H J K L : ' <RET>");
+			// bfont_draw_str(vram_l+20 * 640+10, 640,0,"Z X C V B N M , . /");		
+
 #endif
 }
 
