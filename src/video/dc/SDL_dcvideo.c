@@ -649,11 +649,7 @@ static void DC_UpdateRects(_THIS, int numrects, SDL_Rect *rects)
 #ifndef SDL_VIDEO_OPENGL
 	if (sdl_dc_textured){				
 			sdl_dc_blit_textured();
-			}
-			// bfont_draw_str(vram_l+0 * 640+10, 640,0,"Q W E R T Y U I O P");
-			// bfont_draw_str(vram_l+10 * 640+10, 640,0,"A S D F G H J K L : ' <RET>");
-			// bfont_draw_str(vram_l+20 * 640+10, 640,0,"Z X C V B N M , . /");		
-
+	}
 #endif
 }
 
