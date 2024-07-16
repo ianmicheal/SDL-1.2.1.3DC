@@ -1,6 +1,13 @@
 SDL for Dreamcast 
-Upported by GPF (Troy Davis) from https://github.com/ianmicheal/SDL-dreamhal--GLDC
+Upgraded by GPF (Troy Davis) to latest version 1.2.15 - https://github.com/GPF/SDL-1.2
 
+**Added virtual Keyboard Popup Window
+call SDL_DC_EmulateVirtualKeyboard(SDL_TRUE);
+will open simple onscreen bios font keyboard when joystick is first opened.
+, Press A button to submit keypress, press right trigger to toggle the virtual keyboard on and off
+
+
+This version is based off SDL 1.2.13 from https://github.com/ianmicheal/SDL-dreamhal--GLDC
 (beta2)
 by
 	BERO
