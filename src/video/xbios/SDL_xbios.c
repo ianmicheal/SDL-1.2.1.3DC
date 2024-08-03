@@ -89,19 +89,27 @@ static SDL_bool shadow_warning_shown;
 
 /* Xbios driver bootstrap functions */
 
-static long cookie_vdo;
+static long cookie_vdo, cookie_nova;
 
 static int XBIOS_Available(void)
 {
-	long cookie_hade, cookie_scpn, cookie_fvdi;
+	long cookie_scpn;
 
-	/* Hades does not have neither Atari video chip nor compatible Xbios */
-	if (Getcookie(C_hade, &cookie_hade) == C_FOUND) {
-		return 0;
+	/* NOVA card ? */
+	if (Getcookie(C_NOVA, &cookie_nova) != C_FOUND) {
+		/* Hades does not have neither Atari video chip nor compatible Xbios */
+		if (Getcookie(C_hade, NULL) == C_FOUND) {
+			return 0;
+		}
 	}
 
-	/* fVDI means graphic card, so no Xbios with it */
-	if (Getcookie(C_fVDI, &cookie_fvdi) == C_FOUND) {
+	/* Cookie _VDO present ? if not, assume ST machine */
+	if (Getcookie(C__VDO, &cookie_vdo) != C_FOUND) {
+		cookie_vdo = VDO_ST << 16;
+	}
+
+	/* fVDI/Milan means graphic card, so no Xbios with it */
+	if (Getcookie(C_fVDI, NULL) == C_FOUND || (cookie_vdo >>16) == VDO_MILAN) {
 		const char *envr = SDL_getenv("SDL_VIDEODRIVER");
 
 		if (!envr) {
@@ -110,12 +118,12 @@ static int XBIOS_Available(void)
 		if (SDL_strcmp(envr, XBIOS_VID_DRIVER_NAME)!=0) {
 			return 0;
 		}
-		/* Except if we force Xbios usage, through env var */
-	}
-
-	/* Cookie _VDO present ? if not, assume ST machine */
-	if (Getcookie(C__VDO, &cookie_vdo) != C_FOUND) {
-		cookie_vdo = VDO_ST << 16;
+		/* Except if we force Xbios usage, through env var.
+		 * The Milan officially has XBIOS support but it seems that only on
+		 * S3 Trio graphics cards. As this hasn't been confirmed yet and
+		 * the ATI Rage driver definitely doesn't provide it, disable it
+		 * by default.
+		 */
 	}
 
 	/* Test if we have a monochrome monitor plugged in */
@@ -156,7 +164,6 @@ static void XBIOS_DeleteDevice(SDL_VideoDevice *device)
 static SDL_VideoDevice *XBIOS_CreateDevice(int devindex)
 {
 	SDL_VideoDevice *device;
-	long cookie_cvdo;
 
 	/* Initialize all variables that we clean on shutdown */
 	device = (SDL_VideoDevice *)SDL_malloc(sizeof(SDL_VideoDevice));
@@ -207,12 +214,9 @@ static SDL_VideoDevice *XBIOS_CreateDevice(int devindex)
 	device->hidden->updRects = XBIOS_UpdateRects;
 
 	/* Setup device specific functions, default to ST for everything */
-	if (Getcookie(C__VDO, &cookie_cvdo) != C_FOUND) {
-		cookie_cvdo = VDO_ST << 16;
-	}
-	SDL_XBIOS_VideoInit_ST(device, cookie_cvdo);
+	SDL_XBIOS_VideoInit_ST(device, cookie_vdo);
 
-	switch (cookie_cvdo>>16) {
+	switch (cookie_vdo>>16) {
 		case VDO_ST:
 		case VDO_STE:
 			/* Already done as default */
@@ -226,6 +230,10 @@ static SDL_VideoDevice *XBIOS_CreateDevice(int devindex)
 		case VDO_MILAN:
 			SDL_XBIOS_VideoInit_Milan(device);
 			break;
+	}
+
+	if (cookie_nova) {
+		SDL_XBIOS_VideoInit_Nova(device, (void *) cookie_nova);
 	}
 
 	return device;
@@ -638,11 +646,15 @@ static void XBIOS_UpdateRects(_THIS, int numrects, SDL_Rect *rects)
 			blockDstStart += XBIOS_pitch * rects[i].y;
 			blockDstStart += surface->format->BytesPerPixel * rects[i].x;
 
-			for(y=0;y<rects[i].h;y++){
-				SDL_memcpy(blockDstStart,blockSrcStart,surface->pitch);
+			if ((surface->pitch == XBIOS_pitch) && (surface->pitch == rects[i].w * surface->format->BytesPerPixel)) {
+				SDL_memcpy(blockDstStart, blockSrcStart, rects[i].h * surface->pitch);
+			} else {
+				for(y=0;y<rects[i].h;y++){
+					SDL_memcpy(blockDstStart, blockSrcStart, rects[i].w * surface->format->BytesPerPixel);
 
-				blockSrcStart += surface->pitch;
-				blockDstStart += XBIOS_pitch;
+					blockSrcStart += surface->pitch;
+					blockDstStart += XBIOS_pitch;
+				}
 			}
 		}
 	}
@@ -707,10 +719,15 @@ static int XBIOS_FlipHWSurface(_THIS, SDL_Surface *surface)
 		src = surface->pixels + src_offset;
 		dst = ((Uint8 *) XBIOS_screens[XBIOS_fbnum]) + dst_offset;
 
-		for (i=0; i<surface->h; i++) {
-			SDL_memcpy(dst, src, surface->w * surface->format->BytesPerPixel);
-			src += surface->pitch;
-			dst += XBIOS_pitch;
+		if ((surface->pitch == XBIOS_pitch) && (surface->pitch == surface->w * surface->format->BytesPerPixel)) {
+			SDL_memcpy(dst, src, surface->h * surface->pitch);
+		} else {
+			for (i=0; i<surface->h; i++) {
+				SDL_memcpy(dst, src, surface->w * surface->format->BytesPerPixel);
+
+				src += surface->pitch;
+				dst += XBIOS_pitch;
+			}
 		}
 	}
 
