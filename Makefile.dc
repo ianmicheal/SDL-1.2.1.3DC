@@ -1,12 +1,12 @@
-
-#Custom version by Ian micheal included fast math built in Dreamhal
-#based on chui's great sdl now for kos2.0 fast blit and pixel
-#dreamhal memory routines and replacements Threading update
-#thanks to all in the scene that support me
-#GL=1
+# Custom version by Ian Micheal included fast math built in Dreamhal
+# based on chui's great sdl now for kos2.0 fast blit and pixel
+# dreamhal memory routines and replacements Threading update
+# thanks to all in the scene that support me
+# GL=1
 
 CC = sh-elf-gcc
-AR = sh-elf-ar
+AR = sh-elf-gcc-ar
+LD = sh-elf-gcc
 
 ifdef GL
 DEFS += -DSDL_VIDEO_OPENGL=1
@@ -19,7 +19,7 @@ KOS_CFLAGS += -Iinclude -Isrc -Isrc/audio -Isrc/cdrom -Isrc/endian
 KOS_CFLAGS += -Isrc/events -Isrc/joystick -Isrc/thread/dc -Isrc/thread -Isrc/timer
 KOS_CFLAGS += -Isrc/video -Isrc/video/dc -DNO_SIGNAL_H -DENABLE_DC
 
-CFLAGS=$(KOS_CFLAGS) $(DEFS) -Iinclude
+CFLAGS = $(KOS_CFLAGS) $(DEFS) -Iinclude
 
 SRCS = \
     src/audio/dc/SDL_dcaudio.c \
@@ -83,7 +83,7 @@ SRCS = \
     src/video/SDL_video.c \
     src/video/SDL_yuv.c \
     src/video/SDL_yuv_sw.c \
-    src/cpuinfo/SDL_cpuinfo.o \
+    src/cpuinfo/SDL_cpuinfo.c \
 
 OBJS = $(SRCS:.c=.o)
 
