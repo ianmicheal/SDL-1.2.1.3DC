@@ -231,7 +231,7 @@ static void DCAUD_PlayAudio(_THIS)
 	this->hidden->nextbuf^=1;
 	/* Write the audio data, checking for EAGAIN on broken audio drivers */
 	if (spec->channels==1) {
-		SDL_DC_spu_memload_mono(this->hidden->leftpos+offset,(uint32 *)this->hidden->mixbuf,this->hidden->mixlen);
+		SDL_DC_spu_memload_mono(this->hidden->leftpos+offset,(uint32 *__restrict__)this->hidden->mixbuf,this->hidden->mixlen);
 	} else {
 		offset>>=1;
 		if ((this->spec.format&255)==8) {

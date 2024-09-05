@@ -264,6 +264,7 @@ extern DECLSPEC void * SDLCALL SDL_memset(void *dst, int c, size_t len);
 #if defined(__DREAMCAST__)
 #undef SDL_memset
 #define SDL_memset      memset_
+void * memset_ (void *dest, const uint8_t val, size_t len);
 #endif
 #if defined(__GNUC__) && defined(__i386__)
 #define SDL_memset4(dst, val, len)				\
@@ -335,6 +336,7 @@ extern DECLSPEC void * SDLCALL SDL_memcpy(void *dst, const void *src, size_t len
 #if defined(__DREAMCAST__)
 #undef SDL_memcpy
 #define SDL_memcpy      memcpy_
+void * memcpy_ (void *dest, const void *src, size_t len);
 #endif
 
 /* We can count on memcpy existing on Mac OS X and being well-tuned. */
@@ -410,6 +412,7 @@ do {							\
 #if defined(__DREAMCAST__)
 #undef SDL_memmove
 #define SDL_memmove      memmove_
+void * memmove_ (void *dest, const void *src, size_t len);
 #endif
 
 #ifdef HAVE_MEMCMP
@@ -421,6 +424,7 @@ extern DECLSPEC int SDLCALL SDL_memcmp(const void *s1, const void *s2, size_t le
 #if defined(__DREAMCAST__)
 #undef SDL_memcmp
 #define SDL_memcmp      memcmp_
+int memcmp_ (const void *str1, const void *str2, size_t count);
 #endif
 
 #ifdef HAVE_STRLEN

@@ -97,7 +97,7 @@ struct joystick_hwdata
  * It should return 0, or -1 on an unrecoverable fatal error.
  */
 
-int __sdl_dc_emulate_keyboard=1, __sdl_dc_emulate_mouse=1;__sdl_dc_emulate_vhkb_keyboard=0;
+int __sdl_dc_emulate_keyboard=1, __sdl_dc_emulate_mouse=1,__sdl_dc_emulate_vhkb_keyboard=0;
 
 void SDL_DC_EmulateVirtualKeyboard(SDL_bool value)
 {
@@ -114,6 +114,7 @@ void SDL_DC_EmulateMouse(SDL_bool value)
 	__sdl_dc_emulate_mouse=(int)value;
 }
 
+void toggleVirtualKeyboard();
 
 int SDL_SYS_JoystickInit(void)
 {
@@ -364,7 +365,7 @@ unsigned short getVKBD_SDLKeySym(const char* selectedChar) {
 
 
 // Function to handle virtual keyboard navigation
-char* navigateVirtualKeyboard(VKNavigateDir dir) {
+char navigateVirtualKeyboard(VKNavigateDir dir) {
     int new_row = vk_row;
     int new_col = vk_col;
 
@@ -422,6 +423,8 @@ char* navigateVirtualKeyboard(VKNavigateDir dir) {
             case VK_RIGHT:
                 new_col = (new_col < VK_COLS - 1) ? new_col + 1 : 0;
                 break;
+            case VK_SELECT:
+                break;                
         }
 
         // Prevent out-of-bounds access
@@ -486,7 +489,8 @@ static void joyUpdate(SDL_Joystick *joystick) {
 
     cont_state_t *cond;
 	int buttons,prev_buttons,i,max,changed;
-	int prev_ltrig,prev_rtrig,prev_joyx,prev_joyy,prev_joy2x,prev_joy2y;
+    int prev_ltrig = 0, prev_rtrig = 0, prev_joyx = 0, prev_joyy = 0, prev_joy2x = 0, prev_joy2y = 0;
+
 
 	//Get buttons of the Controller
 	maple_device_t * dev = SYS_Joystick_addr[joystick->index];

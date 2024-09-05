@@ -31,11 +31,12 @@
 #include <kos.h>
 
 #include "SDL_thread.h"
+#include "SDL_systhread.h"
 #include "SDL_timer.h"
 #include "SDL_error.h"
 #include "SDL_timer_c.h"
 
-static unsigned start;
+// static unsigned start;
 
 /* 
 	jif =  ms * HZ /1000
