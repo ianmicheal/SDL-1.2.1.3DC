@@ -362,6 +362,7 @@ do {								\
 #if defined(__DREAMCAST__)
 #undef SDL_memcpy4
 #define SDL_memcpy4      memcpy_32bit
+void * memcpy_32bit(void *dest, const void *src, size_t len);
 #endif
 
 #if defined(__GNUC__) && defined(__i386__)

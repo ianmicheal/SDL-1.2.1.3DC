@@ -115,7 +115,7 @@ TEST = \
     test/torturethread.c
 
 # Compile source files into object files
-%.o: %.c copy_config
+%.o: %.c copy_headers
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Main target
@@ -124,13 +124,13 @@ $(TARGET): $(OBJS)
 	$(AR) rcs $(KOS_BASE)/addons/lib/$(KOS_ARCH)/$(TARGET) $(OBJS)
 
 # Rule to copy headers
-copy_headers:
+copy_headers: copy_config
 	@rm -rf $(KOS_BASE)/addons/include/SDL
 	@mkdir -p $(KOS_BASE)/addons/include/SDL
 	@cp -R include/*.h $(KOS_BASE)/addons/include/SDL
 
 # Copy config files
-copy_config: copy_headers
+copy_config: 
 	@cp include/SDL_config.h.default include/SDL_config.h
 
 # Clean target
