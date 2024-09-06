@@ -123,8 +123,14 @@ $(TARGET): $(OBJS)
 	@rm -f $(KOS_BASE)/addons/lib/$(KOS_ARCH)/$(TARGET)
 	$(AR) rcs $(KOS_BASE)/addons/lib/$(KOS_ARCH)/$(TARGET) $(OBJS)
 
+# Rule to copy headers
+copy_headers:
+	@rm -rf $(KOS_BASE)/addons/include/SDL
+	@mkdir -p $(KOS_BASE)/addons/include/SDL
+	@cp -R include/*.h $(KOS_BASE)/addons/include/SDL
+
 # Copy config files
-copy_config:
+copy_config: copy_headers
 	@cp include/SDL_config.h.default include/SDL_config.h
 
 # Clean target

@@ -29,9 +29,9 @@
 
 #include "SDL_config.h"
 
-#if defined(__DREAMCAST__)
-#include "memfuncs.h"
-#endif
+// #if defined(__DREAMCAST__)
+// #include "memfuncs.h"
+// #endif
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
@@ -299,6 +299,7 @@ do {						\
 #if defined(__DREAMCAST__)
 #undef SDL_memset4
 #define SDL_memset4      memset_32bit
+void * memset_32bit(void *dest, const uint32_t val, size_t len);
 #endif
 
 /* We can count on memcpy existing on Mac OS X and being well-tuned. */
