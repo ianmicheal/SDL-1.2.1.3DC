@@ -503,23 +503,6 @@ static void joyUpdate(SDL_Joystick *joystick) {
     prev_buttons = joystick->hwdata->prev_buttons;
 	changed = buttons^prev_buttons;
 
-	//Check L and R triggers
-	//In this case, do not flip the PRESSED/RELEASED!
-	if (cond->rtrig!=prev_rtrig)
-	{
-		if (__sdl_dc_emulate_vhkb_keyboard)
-			toggleVirtualKeyboard();
-
-		if (__sdl_dc_emulate_keyboard)
-			if (((prev_rtrig) && (!cond->rtrig)) ||
-		    	    ((!prev_rtrig) && (cond->rtrig)))
-			{
-				keysym.sym=_dc_sdl_key[joystick->index][7];
-				SDL_PrivateKeyboard((cond->rtrig)?SDL_PRESSED:SDL_RELEASED,&keysym);
-			}
-		SDL_PrivateJoystickAxis(joystick, 2, cond->rtrig);
-	}
-
 // Handle virtual keyboard navigation if visible
 if (virtual_keyboard_visible) {
     drawVirtualKeyboard(); 
@@ -695,7 +678,23 @@ if (virtual_keyboard_visible) {
 	if (cond->joyy!=prev_joyy)
 		SDL_PrivateJoystickAxis(joystick, 1, cond->joyy);
 	
+	//Check L and R triggers
+	//In this case, do not flip the PRESSED/RELEASED!
+	if (cond->rtrig!=prev_rtrig)
+	{
+		if (__sdl_dc_emulate_vhkb_keyboard)
+			toggleVirtualKeyboard();
 
+		if (__sdl_dc_emulate_keyboard)
+			if (((prev_rtrig) && (!cond->rtrig)) ||
+		    	    ((!prev_rtrig) && (cond->rtrig)))
+			{
+				keysym.sym=_dc_sdl_key[joystick->index][7];
+				SDL_PrivateKeyboard((cond->rtrig)?SDL_PRESSED:SDL_RELEASED,&keysym);
+			}
+		SDL_PrivateJoystickAxis(joystick, 2, cond->rtrig);
+	}
+    
 	if (cond->ltrig!=prev_ltrig)
 	{
 		if (__sdl_dc_emulate_keyboard)
