@@ -1,27 +1,51 @@
 
-# SDL_gfx Library
+<p align="center">
+  <img src="https://www.libsdl.org/media/SDL_logo.png" alt="SDL Logo" width="200"/>
+</p>
 
-## SDL graphics drawing primitives and other support functions
+<h1 align="center">SDL_gfx Library</h1>
 
-The SDL_gfx library evolved out of the **SDL_gfxPrimitives** code which provided basic drawing routines such as lines, circles or polygons and **SDL_rotozoom** which implemented an interpolating rotozoomer for SDL surfaces.
+<p align="center">
+  <strong>SDL graphics drawing primitives and other support functions</strong>
+</p>
 
-### Current Components
+<p align="center">
+  <a href="#about">About</a> •
+  <a href="#components">Components</a> •
+  <a href="#features">Features</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#contributors">Contributors</a>
+</p>
 
-The current components of the SDL_gfx library are:
+## About
 
-1. **Graphic Primitives** (SDL_gfxPrimitves.h)
-2. **Rotozoomer** (SDL_rotozoom.h)
-3. **Framerate control** (SDL_framerate.h)
-4. **MMX image filters** (SDL_imageFilter.h)
+The SDL_gfx library evolved out of two powerful components:
 
-### Features
+1. **SDL_gfxPrimitives**: Provided basic drawing routines such as lines, circles, and polygons.
+2. **SDL_rotozoom**: Implemented an interpolating rotozoomer for SDL surfaces.
 
-- The library is backwards compatible with the above-mentioned code.
-- It is written in plain C and can be used in C++ code.
+Together, they form a comprehensive graphics library for SDL developers.
 
-### Usage
+## Components
 
-To use the SDL_gfx library in your project, include the necessary headers:
+The SDL_gfx library consists of four main components:
+
+| Component | Header File | Description |
+|-----------|-------------|-------------|
+| 🎨 Graphic Primitives | `SDL_gfxPrimitves.h` | Basic drawing functions |
+| 🔄 Rotozoomer | `SDL_rotozoom.h` | Image rotation and zooming |
+| ⏱️ Framerate control | `SDL_framerate.h` | FPS management |
+| 🖼️ MMX image filters | `SDL_imageFilter.h` | Fast image processing |
+
+## Features
+
+- ✅ Backwards compatible with original SDL_gfxPrimitives and SDL_rotozoom
+- 🔧 Written in plain C for maximum compatibility
+- 🔀 Can be seamlessly used in C++ projects
+
+## Usage
+
+To harness the power of SDL_gfx in your project, include these headers:
 
 ```c
 #include <SDL_gfxPrimitives.h>
@@ -31,36 +55,34 @@ To use the SDL_gfx library in your project, include the necessary headers:
 ```
 
 ## Contributors
-* Fix for filledbox by Ingo van Lil, inguin at gmx.de - thanks Ingo.
 
-* Non-alpha line drawing code adapted from routine by Pete Shinners, pete at shinners.org - thanks Pete.
+We're grateful to the following contributors who have helped improve SDL_gfx:
 
-* More fixes by Karl Bartel, karlb at gmx.net - thanks Karl.
+- **Ingo van Lil** (inguin at gmx.de) - Fixed filledbox
+- **Pete Shinners** (pete at shinners.org) - Non-alpha line drawing code
+- **Karl Bartel** (karlb at gmx.net) - Various fixes
+- **Danny van Bruggen** (danny at froukepc.dhs.org) - Testing, suggestions, and VisualC makefile
+- **Stephane Magnenat** (nct at wg0.ysagoon.com) - AA-circle/-ellipse code idea
+- **Anders Lindström** (cal at swipnet.se) - Faster blending routines
+- **James Turk** (jturk at conceptofzero.com) - VisualC7 project file
+- **Thomas Tongue** (TTongue at imagiware.com) - Project Builder package
+- **Kentaro Fukuchi** (fukuchi at is.titech.ac.jp) - Fix for filledPolygon
+- **Mike Gorchak** (mike at malva.ua) - QNX6 patch
+- **Eike Lange** (eike.lange at uni-essen.de) - Pie idea
+- **Todor Prokopov** (koprok at dir.bg) - Dynamic font setup
+- **Victor (Haypo) Stinner** (victor.stinner at haypocalc.com) - Horizontal/Vertical flipping code
+- **Michael Wybrow** (mjwybrow at cs.mu.oz.au) - OSX build fixes
+- **Dries Verachtert** (dries at ulyssis.org) - gcc3.4 build fixes
 
-* Much testing and suggestions for fixes from Danny van Bruggen, danny at froukepc.dhs.org - thanks Danny.
+<hr>
 
-* AA-circle/-ellipse code idea from Stephane Magnenat, nct at wg0.ysagoon.com - thanks Stephane.
+<p align="center">
+  Made with ❤️ by the SDL community
+</p>
 
-* Faster blending routines contributed by Anders Lindström, cal at swipnet.se - thanks Anders.
-
-* VisualC makefile contributed by Danny van Bruggen, danny at froukepc.dhs.org - thanks Danny.
-
-* VisualC7 project file contributed by James Turk, jturk at conceptofzero.com - thanks James.
-
-* Project Builder package contributed by Thomas Tongue, TTongue at imagiware.com - Thanks Thomas.
-
-* Fix for filledPolygon contributed by Kentaro Fukuchi fukuchi at is.titech.ac.jp - Thanks Kentaro.
-
-* QNX6 patch contributed by Mike Gorchak, mike at malva.ua - Thanks Mike.
-
-* Pie idea contributed by Eike Lange, eike.lange at uni-essen.de - Thanks Eike.
-
-* Dynamic font setup by Todor Prokopov, koprok at dir.bg - Thanks Todor.
-
-* Horizontal/Vertical flipping code by Victor (Haypo) Stinner, victor.stinner at haypocalc.com - Thanks Victor.
-
-* OSX build fixes by Michael Wybrow, mjwybrow at cs.mu.oz.au - Thanks Michael.
-
-* gcc3.4 build fixes by Dries Verachtert, dries at ulyssis.org - Thanks Dries.
+<p align="center">
+  <a href="https://www.libsdl.org/">Visit SDL.org</a> •
+  <a href="https://github.com/libsdl-org/SDL">SDL on GitHub</a>
+</p>
 
 
