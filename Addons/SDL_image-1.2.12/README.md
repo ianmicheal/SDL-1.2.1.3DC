@@ -1,6 +1,6 @@
 # SDL_image 1.2.12
 
-![SDL_image Logo](https://www.libsdl.org/projects/SDL_image/docs/SDL_image.png)
+![SDL_image Logo](https://github.com/libsdl-org/SDL_image)
 
 SDL_image is a simple library to load images of various formats as SDL surfaces.
 
