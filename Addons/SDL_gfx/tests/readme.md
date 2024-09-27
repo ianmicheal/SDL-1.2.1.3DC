@@ -30,22 +30,37 @@ To use the SDL_gfx library in your project, include the necessary headers:
 #include <SDL_imageFilter.h>
 ```
 
-### Installation
+## Contributors
+* Fix for filledbox by Ingo van Lil, inguin at gmx.de - thanks Ingo.
 
-(Add installation instructions here)
+* Non-alpha line drawing code adapted from routine by Pete Shinners, pete at shinners.org - thanks Pete.
 
-### Documentation
+* More fixes by Karl Bartel, karlb at gmx.net - thanks Karl.
 
-(Add links to documentation or brief usage examples here)
+* Much testing and suggestions for fixes from Danny van Bruggen, danny at froukepc.dhs.org - thanks Danny.
 
-### Contributing
+* AA-circle/-ellipse code idea from Stephane Magnenat, nct at wg0.ysagoon.com - thanks Stephane.
 
-(Add information about how to contribute to the project)
+* Faster blending routines contributed by Anders Lindström, cal at swipnet.se - thanks Anders.
 
-### License
+* VisualC makefile contributed by Danny van Bruggen, danny at froukepc.dhs.org - thanks Danny.
 
-(Add license information here)
+* VisualC7 project file contributed by James Turk, jturk at conceptofzero.com - thanks James.
 
-### Contact
+* Project Builder package contributed by Thomas Tongue, TTongue at imagiware.com - Thanks Thomas.
 
-(Add contact information or links to issues/discussions)
+* Fix for filledPolygon contributed by Kentaro Fukuchi fukuchi at is.titech.ac.jp - Thanks Kentaro.
+
+* QNX6 patch contributed by Mike Gorchak, mike at malva.ua - Thanks Mike.
+
+* Pie idea contributed by Eike Lange, eike.lange at uni-essen.de - Thanks Eike.
+
+* Dynamic font setup by Todor Prokopov, koprok at dir.bg - Thanks Todor.
+
+* Horizontal/Vertical flipping code by Victor (Haypo) Stinner, victor.stinner at haypocalc.com - Thanks Victor.
+
+* OSX build fixes by Michael Wybrow, mjwybrow at cs.mu.oz.au - Thanks Michael.
+
+* gcc3.4 build fixes by Dries Verachtert, dries at ulyssis.org - Thanks Dries.
+
+
