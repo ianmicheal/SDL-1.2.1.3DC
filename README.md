@@ -12,6 +12,18 @@ SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored 
 
 ![Screenshot of SDL-DREAMHAL](https://github.com/ianmicheal/SDL-dreamhal--GLDC/blob/main/benchmark.png)
 
+# Performance Comparison direct rendering update no priming
+
+| Test                    | 320x240 Software | 320x240 Hardware | 640x480 Software | 640x480 Hardware |
+|-------------------------|------------------:|------------------:|------------------:|------------------:|
+| Slow points (frames/sec)|           0.4197 |           1.0321 |           0.2202 |           0.1299 |
+| Fast points (frames/sec)|          36.0411 |          62.6990 |          20.4440 |          15.7296 |
+| Rect fill (rects/sec)   |        1314.5100 |        2684.1400 |         709.5100 |         696.0070 |
+| 32x32 blits (blits/sec) |        3075.0800 |        4133.2000 |        3005.1400 |        4043.4400 |
+
+This table compares performance across different resolutions and rendering methods.
+
+
 ## Dreamcast Integration
 - **Correct OpenGL integration.**: 
 - **Textured video driver for virtual resolutions.**: 
