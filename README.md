@@ -22,7 +22,7 @@ SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored 
 | 640x480    | Hardware | 0.129902                    | 15.7296                     | 696.007                  | 4043.44                    |
 
 
-This table compares performance across different resolutions and rendering methods.
+- **This table compares performance across different resolutions and rendering methods**.
 
 
 ## Dreamcast Integration
