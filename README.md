@@ -16,10 +16,11 @@ SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored 
 
 | Resolution | Mode     | Slow Points<br>(frames/sec) | Fast Points<br>(frames/sec) | Rect Fill<br>(rects/sec) | 32x32 Blits<br>(blits/sec) |
 |------------|----------|----------------------------:|----------------------------:|-------------------------:|---------------------------:|
-| 320x240    | Software | 0.20885                     | 18.4372                     | 652.125                  | 1327.28                    |
-| 320x240    | Hardware | 0.208823                    | 18.4544                     | 652.333                  | 1327.28                    |
-| 640x480    | Software | 0.025053                    | 4.47263                     | 156.312                  | 1277.21                    |
-| 640x480    | Hardware | 0.025052                    | 4.47271                     | 156.3                    | 1277.6                     |
+| 320x240    | Software | 0.419749                    | 36.0411                     | 1314.51                  | 3075.08                    |
+| 320x240    | Hardware | 1.03212                     | 62.699                      | 2684.14                  | 4133.2                     |
+| 640x480    | Software | 0.220216                    | 20.444                      | 709.51                   | 3005.14                    |
+| 640x480    | Hardware | 0.129902                    | 15.7296                     | 696.007                  | 4043.44                    |
+
 
 This table compares performance across different resolutions and rendering methods.
 
