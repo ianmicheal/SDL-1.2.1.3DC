@@ -1,6 +1,7 @@
 # DREAMCAST SDL-DREAMHAL Version 1.0
 **Based on SDL 1.2.13**
-
+** tested and working on KallistiOS v2.1.0 sh-elf-gcc (GCC) 13.2. Git revision: v2.0.0-1542-gcd4e5db0**
+ 
 ## Overview
 SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored for the Dreamcast. It leverages GLDC for rendering, providing significant performance enhancements for 2D blitting and other operations. This version includes updates for fixed headers and multiple defines.
 
