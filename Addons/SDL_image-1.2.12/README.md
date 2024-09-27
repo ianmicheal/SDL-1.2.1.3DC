@@ -1,7 +1,6 @@
 <h1 align="center">
-  <br>
-  <img src="https://www.libsdl.org/projects/SDL_image/docs/SDL_image.png" alt="SDL_image" width="200">
-  <br>
+  <img src="https://www.libsdl.org/media/SDL_logo.png" alt="SDL Logo" width="200"/>
+</p>
   SDL_image 1.2.12
   <br>
 </h1>
