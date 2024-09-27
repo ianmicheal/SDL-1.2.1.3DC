@@ -12,7 +12,7 @@ SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored 
 
 ![Screenshot of SDL-DREAMHAL](https://github.com/ianmicheal/SDL-dreamhal--GLDC/blob/main/benchmark.png)
 
-# Performance Comparison direct rendering update no priming
+## Performance Comparison direct rendering update no priming
 
 | Resolution | Mode     | Slow Points<br>(frames/sec) | Fast Points<br>(frames/sec) | Rect Fill<br>(rects/sec) | 32x32 Blits<br>(blits/sec) |
 |------------|----------|----------------------------:|----------------------------:|-------------------------:|---------------------------:|
