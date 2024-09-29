@@ -1,5 +1,4 @@
 
-
 ## Simple Transparency
 
 Most special effects in OpenGL rely on some type of blending. Blending is used to combine the color of a pixel about to be drawn with the pixel already on the screen. The combination method is based on the alpha value of the colors and/or the blending function in use.
@@ -54,10 +53,36 @@ As noted by Rui Martins:
 ### Explanation:
 Blending two polygons in different orders yields different results. For correct visual representation, light should pass through farther objects before reaching nearer ones, mimicking reality.
 
+## Texture Mapping and Blending
+
+When using texture mapping with blending, the color specification works as follows:
+
+- In modulated texture mode, each pixel that is texture mapped is multiplied by the current color.
+- Example: If the color to be drawn is (0.5, 0.6, 0.4), and we multiply it by the texture color, we get (0.5, 0.6, 0.4, 0.2) (alpha is assumed to be 1.0 if not specified).
+
+This simple multiplication allows for easy integration of textures with blending effects.
+
+## Important Notes on Blending Implementation
+
+1. **Artifact Prevention (11/13/99)**: 
+   - Using alpha values for source and destination blending can cause artifacts (e.g., darker back faces, screwy object appearance).
+   - The blending method has been modified to improve visual appearance, especially with lighting enabled.
+   - While this may not be the mathematically "correct" way to blend with alpha values, it produces more visually appealing results.
+
+2. **Depth Testing (Update)**: 
+   - Due to issues with `glDepthMask()` on some video cards, the code has been reverted to use `glEnable` and `glDisable` for depth testing.
+
+3. **Alpha from Texture Map**:
+   - Alpha values for transparency can be read directly from a texture map.
+   - To implement this:
+     1. Ensure your image includes an alpha channel.
+     2. Use `GL_RGBA` as the color format in calls to `glTexImage2D()`.
+
 ## Conclusion
 
-While simple blending can work for basic projects, proper handling of transparent objects involves careful ordering and depth management for accurate results in complex scenes.
+Blending in OpenGL is a powerful technique that, while simple in concept, requires careful implementation for best results. By understanding the blending equation, properly handling transparent objects, and correctly integrating with texture mapping, you can achieve sophisticated visual effects in your OpenGL applications.
 
 ---
 
 This README provides a comprehensive overview of blending in OpenGL, suitable for both beginners and those interested in the underlying mathematics and best practices.
+
