@@ -2,7 +2,7 @@
 ## Simple Transparency
 
 Most special effects in OpenGL rely on some type of blending. Blending is used to combine the color of a pixel about to be drawn with the pixel already on the screen. The combination method is based on the alpha value of the colors and/or the blending function in use.
-
+![Screenshot of SDL-DREAMHAL](https://github.com/ianmicheal/SDL-dreamhal--GLDC/blob/main/08.png)
 ### Key Points:
 - Alpha is a 4th color component, usually specified at the end.
 - Use `GL_RGBA` instead of `GL_RGB` to specify alpha.
