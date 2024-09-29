@@ -3,7 +3,7 @@
 ### Historical Context
 
 Back in 2004/2008, SDL integration on the Dreamcast was severely limited:
-- Only worked with KGLX
+- Only worked with KGLX + OLD LIBGL BUGGY
 - Supported a very restricted subset of OpenGL 1.2
 - Hardware rendering capabilities were underutilized
 
@@ -28,26 +28,34 @@ The project has evolved significantly:
 - **Hardware-Accelerated Rendering**: Leverage the Dreamcast's PowerVR chip for optimal performance
 - **Modern Development Experience**: Utilize contemporary tools and practices for retro hardware
 
-
-
 ## 🤝 Contributing
 
 We welcome contributions! If you'd like to improve SDL-1.2.1.3DC+GLdc, please:
+
 1. Fork the repository
 2. Create your feature branch
 3. Commit your changes
 4. Push to the branch
 5. Create a new Pull Request
 
-
 ## 🙏 Acknowledgements
- Ian Michael: for spearheading this project and bringing GLdc OpenGL Integration to the Dreamcast through SDL.
- Chui: for all his work on the Orginal using KGLX
- Hayden Kowalchuk: for diagnosing and fixing a large number of bugs while porting GL Quake to the Dreamcast. Absolute hero!
- BERO: Original work for SDL on Dreamcast.
+
+- **Ian Michael**: For spearheading this project and bringing GLdc OpenGL Integration to the Dreamcast through SDL.
+- **Chui**: For all his work on the original using KGLX.
+- **Hayden Kowalchuk**: For diagnosing and fixing a large number of bugs while porting GL Quake to the Dreamcast. Absolute hero!
+- **BERO**: Original work for SDL on Dreamcast.
+
 ---
-GLdc
-https://gitlab.com/simulant/GLdc
-License
+
+## GLdc
+
+Visit the GLdc project: [https://gitlab.com/simulant/GLdc](https://gitlab.com/simulant/GLdc)
+
+## License
+
 BSD 2-Clause License
+
+---
+
 **Enjoy developing for the Dreamcast with the power of SDL + OpenGL!**
+
