@@ -39,15 +39,12 @@ We welcome contributions! If you'd like to improve SDL-1.2.1.3DC+GLdc, please:
 4. Push to the branch
 5. Create a new Pull Request
 
-## 📜 License
-
-[Include appropriate license information]
 
 ## 🙏 Acknowledgements
- Ian Michael for spearheading this project and bringing GLdc OpenGL Integration to the Dreamcast through SDL.
- Chui for all his work on the Orginal using KGLX
- Massive shout out to Hayden Kowalchuk for diagnosing and fixing a large number of bugs while porting GL Quake to the Dreamcast. Absolute hero!
-
+ Ian Michael: for spearheading this project and bringing GLdc OpenGL Integration to the Dreamcast through SDL.
+ Chui: for all his work on the Orginal using KGLX
+ Hayden Kowalchuk: for diagnosing and fixing a large number of bugs while porting GL Quake to the Dreamcast. Absolute hero!
+ BERO: Original work for SDL on Dreamcast.
 ---
 GLdc
 https://gitlab.com/simulant/GLdc
