@@ -140,8 +140,8 @@ SDL_DC_RestoreSoundBuffer(void)         // Reset to default sound buffer
 Here's an example demonstrating how to use some of these Dreamcast-specific functions:
 
 ```c
-#include <SDL/SDL.h>
-#include <SDL/SDL_dreamcast.h>
+#include "include/SDL.h"
+#include "include/SDL_dreamcast.h"
 
 int main(int argc, char *argv[]) {
     SDL_DC_SetVideoDriver(SDL_DC_DMA_VIDEO);
@@ -240,9 +240,6 @@ releases and can be found at:
 https://github.com/libsdl-org/SDL
 
 Thanks!
-
-
-
 # Simple DirectMedia Layer (SDL) Version 1.2
 
 https://www.libsdl.org/
