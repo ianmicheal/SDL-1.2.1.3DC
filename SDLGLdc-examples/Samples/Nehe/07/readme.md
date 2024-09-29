@@ -10,6 +10,9 @@
 - [Tips and Tricks](#-tips-and-tricks)
 - [Conclusion](#-conclusion)
 
+Here's a visual example of the Texture Filters, Lighting & Keyboard Control Tutorial achieved in this implementation:
+
+![OpenGL Blending Example](https://github.com/ianmicheal/SDL-1.2.1.3DC/raw/SDL-dreamhal--GLDC/SDLGLdc-examples/Samples/Nehe/07/07.png)
 ## 🌟 Introduction
 
 This tutorial covers advanced OpenGL techniques including texture filtering, basic lighting, and keyboard controls for interactive 3D graphics. You'll learn how to create a rotating textured cube with dynamic lighting and user interaction.
