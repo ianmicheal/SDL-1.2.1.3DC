@@ -1,5 +1,6 @@
 /*  DREAMCAST
  *IAN MICHEAL Ported SDL+OPENGL USING SDL[DREAMHAL][GLDC][KOS2.0]2021
+ *IAN MICHEAL Update up port and code fixes for GCC13.2 and NEW KOS2.10
  * Cleaned and tested on dreamcast hardware by Ianmicheal
  *		This Code Was Created By Pet & Commented/Cleaned Up By Jeff Molofee
  *		If You've Found This Code Useful, Please Let Me Know.
