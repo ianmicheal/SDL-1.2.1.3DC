@@ -1,45 +1,103 @@
-# DREAMCAST SDL-DREAMHAL Version 1.0
-- **Based on SDL 1.2.13**:
-- **tested and working on KallistiOS v2.1.0 sh-elf-gcc (GCC) 13.2. Git revision: v2.0.0-1542-gcd4e5db0**
- 
-## Overview
-SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored for the Dreamcast. It leverages GLDC for rendering, providing significant performance enhancements for 2D blitting and other operations. This version includes updates for fixed headers and multiple defines.
+# 🎮 DREAMCAST SDL-DREAMHAL Version 1.0
 
-## Features
-- **Dreamcast Hardware + OpenGL**: Optimized for SDL FAST BLIT SPEED.
-- **2D Blit Speed Benchmark**: Significant improvements in both software and hardware modes.
-- **Integration with GLDC**: Utilizes Kazade's GLDC library for enhanced OpenGL compatibility and performance.
+## 📚 Table of Contents
+- [Overview](#-overview)
+- [Features](#-features)
+- [Performance Comparison](#-performance-comparison)
+- [Dreamcast Integration](#-dreamcast-integration)
+- [SDL](#-sdl)
+- [New Features](#-new-features)
+
+## 🚀 Overview
+
+SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored for the Dreamcast. It leverages GLDC for rendering, providing significant performance enhancements for 2D blitting and other operations.
+
+- **Based on SDL 1.2.13**
+- **Tested and working on KallistiOS v2.1.0**
+- **Compiler: sh-elf-gcc (GCC) 13.2**
+- **Git revision: v2.0.0-1542-gcd4e5db0**
+
+This version includes updates for fixed headers and multiple defines.
+
+## ✨ Features
+
+- **🖥️ Dreamcast Hardware + OpenGL**: Optimized for SDL FAST BLIT SPEED.
+- **⚡ 2D Blit Speed Benchmark**: Significant improvements in both software and hardware modes.
+- **🔗 Integration with GLDC**: Utilizes Kazade's GLDC library for enhanced OpenGL compatibility and performance.
 
 ![Screenshot of SDL-DREAMHAL](https://github.com/ianmicheal/SDL-dreamhal--GLDC/blob/main/benchmark.png)
 
-## Performance Comparison direct rendering update no priming
+## 📊 Performance Comparison
 
-| Resolution | Mode     | Slow Points<br>(frames/sec) | Fast Points<br>(frames/sec) | Rect Fill<br>(rects/sec) | 32x32 Blits<br>(blits/sec) |
-|------------|----------|----------------------------:|----------------------------:|-------------------------:|---------------------------:|
-| 320x240    | Software | 0.419749                    | 36.0411                     | 1314.51                  | 3075.08                    |
-| 320x240    | Hardware | 1.03212                     | 62.699                      | 2684.14                  | 4133.2                     |
-| 640x480    | Software | 0.220216                    | 20.444                      | 709.51                   | 3005.14                    |
-| 640x480    | Hardware | 0.129902                    | 15.7296                     | 696.007                  | 4043.44                    |
+Direct rendering update (no priming):
 
+<table>
+  <tr>
+    <th>Resolution</th>
+    <th>Mode</th>
+    <th>Slow Points<br>(frames/sec)</th>
+    <th>Fast Points<br>(frames/sec)</th>
+    <th>Rect Fill<br>(rects/sec)</th>
+    <th>32x32 Blits<br>(blits/sec)</th>
+  </tr>
+  <tr>
+    <td rowspan="2">320x240</td>
+    <td>Software</td>
+    <td align="right">0.419749</td>
+    <td align="right">36.0411</td>
+    <td align="right">1314.51</td>
+    <td align="right">3075.08</td>
+  </tr>
+  <tr>
+    <td>Hardware</td>
+    <td align="right">1.03212</td>
+    <td align="right">62.699</td>
+    <td align="right">2684.14</td>
+    <td align="right">4133.2</td>
+  </tr>
+  <tr>
+    <td rowspan="2">640x480</td>
+    <td>Software</td>
+    <td align="right">0.220216</td>
+    <td align="right">20.444</td>
+    <td align="right">709.51</td>
+    <td align="right">3005.14</td>
+  </tr>
+  <tr>
+    <td>Hardware</td>
+    <td align="right">0.129902</td>
+    <td align="right">15.7296</td>
+    <td align="right">696.007</td>
+    <td align="right">4043.44</td>
+  </tr>
+</table>
 
-- **This table compares performance across different resolutions and rendering methods**.
+> 💡 This table compares performance across different resolutions and rendering methods.
 
+## 🛠️ Dreamcast Integration
 
-## Dreamcast Integration
-- **Correct OpenGL integration.**: 
-- **Textured video driver for virtual resolutions.**: 
-- **Direct framebuffer video driver using store queues.**:
-- **Mouse emulation using analog pad**: 
-- **Mapped keys as pad buttons.**:
-- **Two texture internal color mode supported: RGB5551 and RGB4444.**:
-- **Fast threaded audio driver.**:
+- **✅ Correct OpenGL integration**
+- **🖼️ Textured video driver for virtual resolutions**
+- **🖥️ Direct framebuffer video driver using store queues**
+- **🖱️ Mouse emulation using analog pad**
+- **🎮 Mapped keys as pad buttons**
+- **🎨 Two texture internal color modes supported: RGB5551 and RGB4444**
+- **🔊 Fast threaded audio driver**
 
-  ## SDL
-SDL is a cross-platform multimedia library designed to provide low-level access to audio, keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.
+## 🌐 SDL
 
-### New Features
-- **Upgraded Blit Speed**: Utilizing moops dreamhal SH4 ASM memcpy and memset.
-- **GLDC Integration**: Improved compatibility and performance with OpenGL 1.2.
+SDL is a cross-platform multimedia library designed to provide low-level access to:
+- Audio
+- Keyboard
+- Mouse
+- Joystick
+- 3D hardware via OpenGL
+- 2D video framebuffer
+
+## 🆕 New Features
+
+- **🚄 Upgraded Blit Speed**: Utilizing moops dreamhal SH4 ASM memcpy and memset.
+- **🔌 GLDC Integration**: Improved compatibility and performance with OpenGL 1.2.
 # 🎮 SDL_dreamcast.h Functions Guide
 
 ## 📚 Table of Contents
