@@ -8,7 +8,7 @@
 - [Code Breakdown](#-code-breakdown)
 - [Tips and Tricks](#-tips-and-tricks)
 - [Conclusion](#-conclusion)
-
+[SDL-1.2.1.3DC Nehe Lesson 06](https://github.com/ianmicheal/SDL-1.2.1.3DC/tree/SDL-dreamhal--GLDC/SDLGLdc-examples/Samples/Nehe/06)
 ## 🌟 Introduction
 
 Texture mapping is a powerful technique in computer graphics that allows you to apply image data to 3D objects, greatly enhancing visual realism and detail without increasing geometric complexity.
