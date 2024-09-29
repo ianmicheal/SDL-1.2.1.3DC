@@ -11,6 +11,9 @@
 - [Tips and Tricks](#-tips-and-tricks)
 - [Conclusion](#-conclusion)
 
+Here's a visual example of the OpenGL 3D Shapes Tutorial achieved in this implementation:
+
+![OpenGL 3D Shapes Tutorial](https://github.com/ianmicheal/SDL-1.2.1.3DC/raw/SDL-dreamhal--GLDC/SDLGLdc-examples/Samples/Nehe/05/05.png)
 ## 🌟 Introduction
 
 This tutorial expands on basic OpenGL concepts to create true 3D objects: a pyramid and a cube. We'll explore how to add depth to 2D shapes, use color blending, and rotate objects in 3D space.
