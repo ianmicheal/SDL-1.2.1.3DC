@@ -51,7 +51,7 @@ $(OBJS) $(OBJEXTRA) -lSDL_gl -lGLdc -lm $(KOS_LIBS)
 ```
 
 - **SDL framebuffer** is used for fast 2D blitting.
-- **SDL-GLdc** is for hardware-accelerated OpenGL rendering with PVR.
+- **SDL-GLdc** is for hardware-accelerated 3d&2d OpenGL rendering with PVR.
 
 ---
 
