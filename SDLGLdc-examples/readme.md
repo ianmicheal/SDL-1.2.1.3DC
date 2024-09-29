@@ -1,7 +1,6 @@
 # 🚀 SDL-1.2.1.3DC with GLdc Integration for Dreamcast
 
 ### Historical Context
-
 Back in 2004/2008, SDL integration on the Dreamcast was severely limited:
 - Only worked with KGLX + OLD LIBGL BUGGY
 - Supported a very restricted subset of OpenGL 1.2
