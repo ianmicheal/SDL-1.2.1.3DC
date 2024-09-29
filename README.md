@@ -284,6 +284,7 @@ For a complete list of features and detailed documentation, please visit the [GL
 - **Chui**: Original work and improvements for SDL on Dreamcast.
 - **Kazade**: GLDC library and enhancements.
 - **MRNEO240**:GLDC Optimizing and Support.
+- **GPF**: For fixing compile errors and warnings in new kos and gcc13.2/14
 GNU Lesser General Public License, version 2.1
 https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
 # DEPRECATED
