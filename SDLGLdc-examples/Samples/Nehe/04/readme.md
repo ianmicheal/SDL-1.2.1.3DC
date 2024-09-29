@@ -8,7 +8,8 @@
 - [Code Breakdown](#-code-breakdown)
 - [Tips and Tricks](#-tips-and-tricks)
 - [Conclusion](#-conclusion)
-
+- 
+![OpenGL  Rotation Tutorial](https://github.com/ianmicheal/SDL-1.2.1.3DC/raw/SDL-dreamhal--GLDC/SDLGLdc-examples/Samples/Nehe/04/04.png)
 ## 🌟 Introduction
 
 This tutorial builds upon previous lessons, introducing the concept of rotation in OpenGL. You'll learn how to rotate colored objects around different axes, adding dynamic movement to your 3D scenes.
