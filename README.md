@@ -154,7 +154,6 @@ This example demonstrates:
 Remember to compile your code with the appropriate SDL libraries and Dreamcast-specific settings.
 
 
-
 ## Additional Resources
 
 - **PORTED TO SDL + OpenGL Dreamhal + GLDC Demos**:
