@@ -1,4 +1,4 @@
-# 🎮 DREAMCAST SDL-DREAMHAL Version 1.0
+# 🎮 DREAMCAST SDL-DREAMHAL Version 1.0 (**SDL Version:** 1.2.1.3DC (Framebuffer & OpenGL)
 
 ![Version](https://img.shields.io/badge/Version-1.0-blue)
 ![Platform](https://img.shields.io/badge/Platform-Dreamcast-orange)
@@ -6,13 +6,10 @@
 
 ---
 
-### 📦 Overview
+### 📦 What is this ?
 
-**DREAMCAST SDL-DREAMHAL Version 1.0** is designed to provide a seamless environment for developing Dreamcast homebrew applications using **KallistiOS** and **SDL**. It includes precompiled libraries and headers that work with both framebuffer (2D) and OpenGL (3D) rendering.
+**DREAMCAST SDL-DREAMHAL Version 1.0** is designed to provide a seamless environment for developing Dreamcast homebrew applications using **KallistiOS** and **SDL**. It includes precompiled libraries and headers that work with both framebuffer (2D) and OpenGL (3D) rendering.You can also compile from src your self.
 
-- **SDL Version:** 1.2.1.3DC (Framebuffer & OpenGL)
-- **KallistiOS Version:** v2.1.0
-- **GCC Version:** 13.2.0
 
 ## 📚 Table of Contents
 - [Overview](#-overview)
