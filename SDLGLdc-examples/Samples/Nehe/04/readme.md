@@ -9,10 +9,13 @@
 - [Tips and Tricks](#-tips-and-tricks)
 - [Conclusion](#-conclusion)
 - 
-![OpenGL  Rotation Tutorial](https://github.com/ianmicheal/SDL-1.2.1.3DC/raw/SDL-dreamhal--GLDC/SDLGLdc-examples/Samples/Nehe/04/04.png)
+Here's a visual example of the OpenGL 3D  Rotation Tutorial achieved in this implementation:
+
+![OpenGL 3D Shapes Tutorial](https://github.com/ianmicheal/SDL-1.2.1.3DC/raw/SDL-dreamhal--GLDC/SDLGLdc-examples/Samples/Nehe/05/05.png)
 ## 🌟 Introduction
 
-This tutorial builds upon previous lessons, introducing the concept of rotation in OpenGL. You'll learn how to rotate colored objects around different axes, adding dynamic movement to your 3D scenes.
+This tutorial expands on basic OpenGL concepts to create true 3D objects: a pyramid and a cube. We'll explore how to add depth to 2D shapes, use color blending, and rotate objects in 3D space
+
 
 ## 🔑 Key Concepts
 
