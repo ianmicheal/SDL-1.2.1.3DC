@@ -8,6 +8,10 @@
 - [Tips and Tricks](#-tips-and-tricks)
 - [Conclusion](#-conclusion)
 
+
+Here's a visual example of the OpenGL 3D  Color Tutorial achieved in this implementation:
+
+![OpenGL Color Tutorial](https://github.com/ianmicheal/SDL-1.2.1.3DC/raw/SDL-dreamhal--GLDC/SDLGLdc-examples/Samples/Nehe/03/03.png)
 ## 🌟 Introduction
 
 This tutorial builds upon the previous lessons, introducing the concept of adding color to shapes in OpenGL. You'll learn how to apply both flat and smooth coloring to triangles and quads, enhancing the visual appeal of your 3D scenes.
