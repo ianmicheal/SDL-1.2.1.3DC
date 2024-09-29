@@ -41,16 +41,117 @@ SDL is a cross-platform multimedia library designed to provide low-level access 
 - **Upgraded Blit Speed**: Utilizing moops dreamhal SH4 ASM memcpy and memset.
 - **GLDC Integration**: Improved compatibility and performance with OpenGL 1.2.
 
-### Video Drivers for Dreamcast
-- **SDL_DC_DMA_VIDEO** (default): Fastest video driver using double buffer.
-- **SDL_DC_TEXTURED_VIDEO**: Allows virtual resolutions and scaling using hardware texture.
-- **SDL_DC_DIRECT_VIDEO**: Direct buffer video driver, potentially faster than DMA without double buffer.
+# SDL_dreamcast.h Functions
 
-### Configuration Options
-- **SDL_DC_VerticalWait(SDL_bool value)**: Enable/disable wait for vertical retrace before blitting to PVR hardware.
-- **SDL_DC_ShowAskHz(SDL_bool value)**: Enable/disable ask for 50/60Hz video (only for PAL Dreamcasts).
-- **SDL_DC_Default60Hz(SDL_bool value)**: Set default display to 60Hz (only for PAL Dreamcasts).
-- **SDL_DC_MapKey(int joy, SDL_DC_button button, SDLKey key)**: Map Dreamcast buttons to SDL keys.
+The `SDL_dreamcast.h` header file provides a set of functions as SDL add-ons specifically for the Dreamcast. These functions allow for fine-tuned control over video settings and behavior on the Dreamcast hardware.
+
+## Video Functions
+
+### Setting the Video Driver
+
+```c
+SDL_DC_SetVideoDriver(SDL_DC_driver value)
+```
+
+Call this function before `SDL_Init` to choose the SDL video driver for Dreamcast. Valid options are:
+
+| Driver | Description |
+|--------|-------------|
+| `SDL_DC_DMA_VIDEO` (default) | Fastest video driver using double buffer. All graphic access uses RAM, and `SDL_Flip` sends data to VRAM using DMA. |
+| `SDL_DC_TEXTURED_VIDEO` | Uses hardware texture for scaling, allowing virtual resolutions. PVR textures are always 2^n (128x128, 256x128, 512x256, etc.). |
+| `SDL_DC_DIRECT_VIDEO` | Direct buffer video driver. Potentially faster than DMA driver when not using double buffering. |
+
+### Vertical Retrace Wait
+
+```c
+SDL_DC_VerticalWait(SDL_bool value)
+```
+
+Enable or disable waiting for vertical retrace before blitting to PVR hardware.
+
+### Display Frequency Options (PAL Dreamcasts Only)
+
+```c
+SDL_DC_ShowAskHz(SDL_bool value)
+```
+
+Enable or disable asking for 50/60Hz display.
+
+```c
+SDL_DC_Default60Hz(SDL_bool value)
+```
+
+Set to `SDL_TRUE` for 60Hz default display.
+
+## Usage Tips
+
+1. Always set the video driver before calling `SDL_Init`.
+2. The DMA driver is the default and generally provides the best performance for most applications.
+3. Use vertical wait to prevent screen tearing, but be aware it may impact performance.
+4. For PAL Dreamcasts, consider whether you want to force 60Hz or allow the user to choose.
+
+## Example Using DMA Driver
+
+```c
+#include <SDL/SDL.h>
+#include <SDL/SDL_dreamcast.h>
+
+int main(int argc, char *argv[]) {
+    // The DMA driver is default, but we can explicitly set it
+    SDL_DC_SetVideoDriver(SDL_DC_DMA_VIDEO);
+    
+    // Initialize SDL
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        fprintf(stderr, "SDL initialization failed: %s\n", SDL_GetError());
+        return 1;
+    }
+
+    // Set video mode (640x480 is a common resolution for Dreamcast)
+    SDL_Surface *screen = SDL_SetVideoMode(640, 480, 16, SDL_HWSURFACE | SDL_DOUBLEBUF);
+    if (!screen) {
+        fprintf(stderr, "Video mode set failed: %s\n", SDL_GetError());
+        SDL_Quit();
+        return 1;
+    }
+
+    // Enable vertical wait to prevent screen tearing
+    SDL_DC_VerticalWait(SDL_TRUE);
+
+    // For PAL Dreamcasts, we could set a default to 60Hz
+    SDL_DC_Default60Hz(SDL_TRUE);
+
+    // Main game loop
+    SDL_Event event;
+    int running = 1;
+    while (running) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                running = 0;
+            }
+        }
+
+        // Clear the screen (fill with black)
+        SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
+
+        // Your drawing code here...
+
+        // Update the screen
+        SDL_Flip(screen);
+    }
+
+    SDL_Quit();
+    return 0;
+}
+```
+
+This example demonstrates:
+- Explicitly setting the DMA video driver (though it's the default)
+- Initializing SDL and setting up a 640x480 video mode with hardware surface and double buffering
+- Enabling vertical wait to prevent screen tearing
+- Setting a default to 60Hz for PAL Dreamcasts
+- A basic game loop structure with event handling and screen updating
+
+Remember to compile your code with the appropriate SDL libraries and Dreamcast-specific settings.
 
 
 
