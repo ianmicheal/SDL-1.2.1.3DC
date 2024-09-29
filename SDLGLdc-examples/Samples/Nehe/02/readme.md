@@ -8,7 +8,9 @@
 - [Code Breakdown](#-code-breakdown)
 - [Tips and Tricks](#-tips-and-tricks)
 - [Conclusion](#-conclusion)
+Here's a visual example of the OpenGL 3D  First OpenGL Polygon Tutorial achieved in this implementation:
 
+![OpenGL First OpenGL Polygon](https://github.com/ianmicheal/SDL-1.2.1.3DC/raw/SDL-dreamhal--GLDC/SDLGLdc-examples/Samples/Nehe/02/02.png)
 ## 🌟 Introduction
 
 This tutorial builds upon the basics of creating an OpenGL window, introducing you to drawing fundamental shapes: triangles and quads. You'll learn how to create and position these shapes in 3D space.
