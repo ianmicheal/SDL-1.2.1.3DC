@@ -21,10 +21,10 @@ SDL_mixer can play **MIDI** format files using software wavetable synthesis, ena
 - **UNIX**: `/usr/local/lib/timidity/`
 
 #### 🔗 Resources:
-- [**Freely Redistributable GUS-Compatible Patches (14 MB)**](https://link.to/timidity_patches)  
-  `timidity.tar.gz`
+- [**Freely Redistributable GUS-Compatible Patches (14 MB)**](https://github.com/ianmicheal/SDL-1.2.1.3DC/blob/SDL-dreamhal--GLDC/Addons/SDL_mixer-1.2.6/timidity.zip)  
+  `timidity.zip`
   
-- [**Sample MIDI Songs (1.3 MB)**](https://link.to/sample_midi_songs)  
+- [**Sample MIDI Songs (1.3 MB)**](https://www.libsdl.org/projects/mixer/timidity/bestmid3.tar.gz)  
   `bestmid3.tar.gz`
 
 ---
