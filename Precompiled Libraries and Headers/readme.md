@@ -1,5 +1,8 @@
 
 # 🎮 Dreamcast Development with KallistiOS and SDL
+![KallistiOS Version](https://img.shields.io/badge/KallistiOS-v2.1.0-blue)
+![SDL Version](https://img.shields.io/badge/SDL-1.2.1.3DC-green)
+![GLdc Version](https://img.shields.io/badge/GLdc-Latest-orange)
 ### Now Added: Primitive Types for OpenGL DC V.1.0
 
 The following primitive types are taken from OpenGL for compatibility purposes. Please note that **not all types are fully implemented** in OpenGL DC Version 1.0.
@@ -17,9 +20,7 @@ The following primitive types are taken from OpenGL for compatibility purposes. 
 #define GL_QUADS                                0x0007
 #define GL_QUAD_STRIP                           0x0008
 #define GL_POLYGON                              0x0009
-![KallistiOS Version](https://img.shields.io/badge/KallistiOS-v2.1.0-blue)
-![SDL Version](https://img.shields.io/badge/SDL-1.2.1.3DC-green)
-![GLdc Version](https://img.shields.io/badge/GLdc-Latest-orange)
+
 
 ### 📦 Precompiled Libraries and Headers
 These libraries and headers are **precompiled** and fully working with the following setup:
