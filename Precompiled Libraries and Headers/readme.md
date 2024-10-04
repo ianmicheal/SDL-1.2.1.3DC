@@ -1,5 +1,18 @@
 
 # 🎮 Dreamcast Development with KallistiOS and SDL
+#now added 
+/* Primitive Types taken from GL for compatability */
+/* Not all types are implemented in Open GL DC V.1.0 */
+#define GL_POINTS                               0x0000
+#define GL_LINES                                0x0001
+#define GL_LINE_LOOP                            0x0002
+#define GL_LINE_STRIP                           0x0003
+#define GL_TRIANGLES                            0x0004
+#define GL_TRIANGLE_STRIP                       0x0005
+#define GL_TRIANGLE_FAN                         0x0006
+#define GL_QUADS                                0x0007
+#define GL_QUAD_STRIP                           0x0008
+#define GL_POLYGON                              0x0009
 
 ![KallistiOS Version](https://img.shields.io/badge/KallistiOS-v2.1.0-blue)
 ![SDL Version](https://img.shields.io/badge/SDL-1.2.1.3DC-green)
