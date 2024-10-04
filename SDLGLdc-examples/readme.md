@@ -18,6 +18,10 @@ The following primitive types are taken from OpenGL for compatibility purposes. 
 #define GL_QUAD_STRIP                           0x0008
 #define GL_POLYGON                              0x0009
 
+```c they should all be implemented with some caveats
+* GL_QUAD_STRIP doesn't cull properly if culling is enabled
+* GL_POLYGON might not properly handle really strange input
+
 ### Historical Context
 Back in 2004/2008, SDL integration on the Dreamcast was severely limited:
 - Only worked with KGLX + OLD LIBGL BUGGY
