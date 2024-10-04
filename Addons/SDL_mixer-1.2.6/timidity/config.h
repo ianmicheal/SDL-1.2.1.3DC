@@ -224,11 +224,18 @@ typedef int int32;
 
 /* You could specify a complete path, e.g. "/etc/timidity.cfg", and
    then specify the library directory in the configuration file. */
+/* You could specify a complete path, e.g. "/etc/timidity.cfg", and
+   then specify the library directory in the configuration file. */
+#ifdef DC
+#define CONFIG_FILE	"/cd/timidity.cfg"
+#define DEFAULT_PATH	"/cd/timidity"
+#else
 #define CONFIG_FILE	"timidity.cfg"
 #ifdef __WIN32__
 #define DEFAULT_PATH	"\\TIMIDITY"
 #else
 #define DEFAULT_PATH	"/usr/local/lib/timidity"
+#endif
 #endif
 
 /* These affect general volume */
