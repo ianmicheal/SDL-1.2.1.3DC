@@ -15,6 +15,8 @@
 ### 🎼 Timidity: MIDI Playback Support
 
 SDL_mixer can play **MIDI** format files using software wavetable synthesis, enabled by an older version of **Timidity**. To use this feature, you need to have a set of **GUS-compatible sound patches** installed on your system. The library looks for these patches in the following default locations:
+- **Dreamcast**: `/cd/timidity`
+- **Dreamcast**: `/cd/timidity.cfg`
 - **Windows**: `C:\timidity`
 - **UNIX**: `/usr/local/lib/timidity/`
 
