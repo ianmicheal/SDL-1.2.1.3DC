@@ -1,5 +1,5 @@
 
-# 🎮 SDL Mixer Test Samples (SDL 1.2)
+# 🎮 SDL Mixer Test Samples SDL 1.2.1.3DC[DREAMHAL]
 
 ![SDL](https://img.shields.io/badge/Library-SDL1.2-orange.svg)
 ![C](https://img.shields.io/badge/Language-C-blue.svg)
