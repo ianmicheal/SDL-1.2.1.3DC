@@ -5,7 +5,11 @@
 ![C](https://img.shields.io/badge/Language-C-blue.svg)
 ![Platform](https://img.shields.io/badge/Platform-Dreamcast-green.svg)
 
-This project is an example of using **SDL 1.2** for joystick input and sprite animation on the Dreamcast. It handles multiple input methods (analog stick, D-pad buttons), integrates audio playback using **SDL_mixer**, and renders sprites with smooth transitions. Built with Dreamcast support via KallistiOS, this project demonstrates the use of analog and digital controls in a gaming environment.
+This project is an example of using **SDL 1.2.1.3DC[DREAMHAL]** for joystick input and sprite animation on the Dreamcast. It handles multiple input methods (analog stick, D-pad buttons), integrates audio playback using **SDL_mixer**, and renders sprites with smooth transitions. Built with Dreamcast support via KallistiOS, this project demonstrates the use of analog and digital controls in a gaming environment.
+
+### ✍️ Author
+
+**Ian Micheal**
 
 ## 🚀 Features
 
@@ -42,20 +46,10 @@ This project is an example of using **SDL 1.2** for joystick input and sprite an
 ## 🛠️ Requirements
 
 - **KallistiOS** (for Dreamcast builds)
-- **SDL 1.2** and **SDL_mixer**
+- **SDL 1.2.1.3** and **SDL_mixer1.2.6**
 - Compatible joystick or gamepad for testing input
 
-## 🖥️ Setup and Running
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/sdl-mixer-test.git
-    ```
-2. Build the project with the Dreamcast toolchain or your local SDL 1.2 setup:
-    ```bash
-    make
-    ```
-3. Run the program on your Dreamcast or local SDL environment.
 
 ## 🎨 Screenshots
 
