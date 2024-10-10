@@ -43,8 +43,7 @@ if (event.jbutton.button == SDL_DC_START) {
 ## 📋 Examples
 
 1. 🌀 **Warp Effect**: A mesmerizing image warping demo
-2. 🎵 **Audio Mixer**: Showcasing Dreamcast's audio capabilities
-3. 🏃 **Sprite Animation**: Smooth character animation example
+
 
 ## 🚀 Getting Started
 
@@ -60,10 +59,6 @@ For more detailed information on Dreamcast-specific SDL functions, please refer 
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
