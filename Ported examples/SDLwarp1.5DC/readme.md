@@ -117,7 +117,7 @@ By combining these elements, the program creates a smooth, dynamic warping effec
 2. Clone this repository.
 3. Compile using your Dreamcast toolchain:
    ```
-   kos-cc main.c warp.c -o warp.elf -lSDL -lSDL_image
+   type make 
    ```
 4. Run on Dreamcast hardware or an emulator.
 
