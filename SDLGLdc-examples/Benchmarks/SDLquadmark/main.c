@@ -1,7 +1,8 @@
 /*
-   KallistiGL 2.0.0
+   KallistiGL 2.1.0 SDL Dreamhal version opengl
 
    quadmark.c
+   (c)2024 Ian micheal
    (c)2018 Luke Benstead
    (c)2014 Josh Pearson
    (c)2002 Dan Potter, Paul Boese
