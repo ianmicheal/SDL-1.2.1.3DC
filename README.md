@@ -35,9 +35,10 @@ This version includes updates for fixed headers and multiple defines.
 - **🔗 Integration with GLDC**: Utilizes Kazade's GLDC library for enhanced OpenGL compatibility and performance.
 
 - Correct use of the pvr textured scaled driver you cant use fullscreen
-- /* HARDWARE SCALED: ONLY FOR TEXTURED DRIVER !
+- ** /* HARDWARE SCALED: ONLY FOR TEXTURED DRIVER !
    NO FULLSCREEN
    IF FULLSCREEN + TEXTURED_DRIVER = DMA_DRIVER */
+  - **HARDWARE SCALED AND DOUBLEBUF: ONLY FOR TEXTURED DRIVER!. 
   
 <table>
   <tr>
