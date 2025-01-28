@@ -23,7 +23,7 @@ SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored 
 
 - **Based on SDL 1.2.13**
 - **Tested and working on KallistiOS v2.1.0**
-- **Compiler: sh-elf-gcc (GCC) 13.2**
+- **Compiler: sh-elf-gcc (GCC) 14.2**
 - **Git revision: v2.0.0-1542-gcd4e5db0**
 
 This version includes updates for fixed headers and multiple defines.
@@ -33,6 +33,14 @@ This version includes updates for fixed headers and multiple defines.
 - **🖥️ Dreamcast Hardware + OpenGL**: Optimized for SDL FAST BLIT SPEED.
 - **⚡ 2D Blit Speed Benchmark**: Significant improvements in both software and hardware modes.
 - **🔗 Integration with GLDC**: Utilizes Kazade's GLDC library for enhanced OpenGL compatibility and performance.
+
+  | Test                          | DIRECT (320x240) | DMA (320x240) | PVRTEXTURED (scaled) | PVRTEXTURE+DB (scaled) |
+|-------------------------------|------------------|---------------|-----------------------|-------------------------|
+| Slow points (frames/sec)      | 0.419705         | 0.914495      | 0.218299             | 0.523081               |
+| Fast points (frames/sec)      | 36.0614          | 58.8912       | 20.413               | 35.1745                |
+| Rect fill (rects/sec)         | 1282             | 215.16        | 55.3858              | 131.211                |
+| 32x32 blits (blits/sec)       | 2872.37          | 211.483       | 55.3342              | 131.696                |
+
 
 ![Screenshot of SDL-DREAMHAL](https://github.com/ianmicheal/SDL-dreamhal--GLDC/blob/main/benchmark.png)
 
