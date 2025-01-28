@@ -1,10 +1,37 @@
 
 /*
-   Name: Ian micheal
-   Copyright: 2021
-   Author: SDL example sorry i dont know / ported and refined By Ian micheal
-   Date: 19/06/21 13:21
-   Description: SDL dreamhal 1.0 video benchmark 
+  Name: SDL-DC Video Benchmark
+  Copyright: 2024
+  Author: Original SDL example modified for DC, enhanced by Ian Michael
+         Further optimized for Dreamcast video driver testing
+  
+  Description: 
+  A comprehensive Dreamcast SDL video benchmark testing all available video modes:
+  
+  1. DIRECT VIDEO (320x240):
+     - Direct framebuffer access
+     - Basic hardware surface mode
+     - No double buffering
+  
+  2. DMA VIDEO (320x240):
+     - Hardware accelerated DMA transfers
+     - Double buffered for smooth updates
+     - Full hardware surface support
+  
+  3. PVR TEXTURED (512x256 -> 320x240):
+     - PowerVR2 texture-based rendering
+     - Hardware scaled to display size
+     - Single buffered texture mode
+  
+  4. PVR TEXTURED + DB (512x256 -> 320x240):
+     - PowerVR2 texture-based rendering
+     - Hardware scaled with double buffering
+     - Optimal for sprite/texture heavy content
+  
+  5. DMA VIDEO HI-RES (640x480):
+     - High resolution DMA mode
+     - Double buffered hardware surfaces
+     - Tests scaling performance impact
 */
 
 #include <kos.h>
