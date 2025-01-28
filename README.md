@@ -33,12 +33,10 @@ This version includes updates for fixed headers and multiple defines.
 - **🖥️ Dreamcast Hardware + OpenGL**: Optimized for SDL FAST BLIT SPEED.
 - **⚡ 2D Blit Speed Benchmark**: Significant improvements in both software and hardware modes.
 - **🔗 Integration with GLDC**: Utilizes Kazade's GLDC library for enhanced OpenGL compatibility and performance.
-
-- Correct use of the pvr textured scaled driver you cant use fullscreen
-- ** /* HARDWARE SCALED: ONLY FOR TEXTURED DRIVER !
-   NO FULLSCREEN
-   IF FULLSCREEN + TEXTURED_DRIVER = DMA_DRIVER */
-  - **HARDWARE SCALED AND DOUBLEBUF: ONLY FOR TEXTURED DRIVER!. 
+## Correct use of the pvr textured scaled driver you cant use fullscreen
+- **HARDWARE SCALED**: ONLY FOR TEXTURED DRIVER NO FULLSCREEN
+- **IF FULLSCREEN + TEXTURED_DRIVER**: = DMA_DRIVER 
+- **HARDWARE SCALED AND DOUBLEBUF**: ONLY FOR TEXTURED DRIVER!. 
   
 <table>
   <tr>
