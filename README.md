@@ -34,12 +34,51 @@ This version includes updates for fixed headers and multiple defines.
 - **⚡ 2D Blit Speed Benchmark**: Significant improvements in both software and hardware modes.
 - **🔗 Integration with GLDC**: Utilizes Kazade's GLDC library for enhanced OpenGL compatibility and performance.
 
-  | Test                          | DIRECT (320x240) | DMA (320x240) | PVRTEXTURED (scaled) | PVRTEXTURE+DB (scaled) |
-|-------------------------------|------------------|---------------|-----------------------|-------------------------|
-| Slow points (frames/sec)      | 0.419705         | 0.914495      | 0.218299             | 0.523081               |
-| Fast points (frames/sec)      | 36.0614          | 58.8912       | 20.413               | 35.1745                |
-| Rect fill (rects/sec)         | 1282             | 215.16        | 55.3858              | 131.211                |
-| 32x32 blits (blits/sec)       | 2872.37          | 211.483       | 55.3342              | 131.696                |
+- Correct use of the pvr textured scaled driver you cant use fullscreen
+- /* HARDWARE SCALED: ONLY FOR TEXTURED DRIVER !
+   NO FULLSCREEN
+   IF FULLSCREEN + TEXTURED_DRIVER = DMA_DRIVER */
+  
+<table>
+  <tr>
+    <th>Resolution</th>
+    <th>Mode</th>
+    <th>Slow Points<br>(frames/sec)</th>
+    <th>Fast Points<br>(frames/sec)</th>
+    <th>Rect Fill<br>(rects/sec)</th>
+    <th>32x32 Blits<br>(blits/sec)</th>
+  </tr>
+  <tr>
+    <td rowspan="2">320x240</td>
+    <td>DIRECT</td>
+    <td align="right">0.419705</td>
+    <td align="right">36.0614</td>
+    <td align="right">1282</td>
+    <td align="right">2872.37</td>
+  </tr>
+  <tr>
+    <td>DMA</td>
+    <td align="right">0.914495</td>
+    <td align="right">58.8912</td>
+    <td align="right">215.16</td>
+    <td align="right">211.483</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Scaled</td>
+    <td>PVRTEXTURED</td>
+    <td align="right">0.218299</td>
+    <td align="right">20.413</td>
+    <td align="right">55.3858</td>
+    <td align="right">55.3342</td>
+  </tr>
+  <tr>
+    <td>PVRTEXTURE+DB</td>
+    <td align="right">0.523081</td>
+    <td align="right">35.1745</td>
+    <td align="right">131.211</td>
+    <td align="right">131.696</td>
+  </tr>
+</table>
 
 
 ![Screenshot of SDL-DREAMHAL](https://github.com/ianmicheal/SDL-dreamhal--GLDC/blob/main/benchmark.png)
